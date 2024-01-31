@@ -21,7 +21,8 @@
     {%- endunless -%}
 
     <title>
-      {{ page_title }}
+      {{ page_title }} this is just a test
+      
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
