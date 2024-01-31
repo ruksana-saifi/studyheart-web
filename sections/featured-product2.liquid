@@ -1,0 +1,449 @@
+{% style %}
+    .featured_product.featured_product2  {
+      padding-top: {{ section.settings.padding-top }}px;
+      padding-bottom: {{ section.settings.padding-bottom }}px;
+    }
+    div#js_cart_popup.act_opened .hero_canvas {
+      -webkit-transform: translate3d(0%,0,0) !important;
+     transform: translate3d(0%,0,0) !important;
+    opacity: 1 !important;
+  }
+{% endstyle %}
+
+{% assign productId = section.settings.product %}
+
+{% if productId != blank %}
+  {% assign product = all_products[productId] %}
+
+  <div
+    id="{{ section.id }}"
+    class="featured_product featured_product2 section-padding--{{ section.settings.padding-top }} section-padding--{{ section.settings.padding-bottom }}"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div
+            class="grid__item product__media-wrapper"
+            style="/*background-image: url({{ product.featured_image.src | product_img_url: 'large' }})*/"
+          >
+            <img
+              src="{{ product.featured_image.src | product_img_url: 'large' }}"
+              alt="threadvibe living"
+              width="720px"
+              height="720px"
+            >
+            <div class="most-selling-product">
+              <span>Most Selling Product</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 product__info-outer">
+          <div class="product__info-wrapper">
+            <h2 class="product__title h1">
+              {% if product %}
+                {{ product.title }}
+              {% else %}
+                No product found with ID: {{ productId }}
+              {% endif %}
+            </h2>
+            <div class="price__container">
+              <div class="price__regular">
+                <div class="price-item price-item--regular">
+                  <span>
+                    {% if product %}
+                      {{ product.price | money_without_trailing_zeros }}
+                    {% else %}
+                      No product found with ID: {{ productId }}
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+
+              <div class="price__sale">
+                <div class="price-item price-item--sale">
+                  <span>
+                    {% if product %}
+                      {{ product.compare_at_price | money_without_trailing_zeros }}
+                    {% else %}
+                      No product found with ID: {{ productId }}
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+
+              <div class="discount">
+                <span>-35%</span>
+              </div>
+            </div>
+            <div class="price-per-item__container">
+              <span>Qty:</span>
+
+              <quantity-input class="quantity quantity_outer">
+                <div class="quantity-inner">
+                  <button class="minus" aria-label="Decrease">&minus;</button>
+                  <input type="number" class="input-box" value="1" min="1" max="100">
+                  <button class="plus plus_prices" aria-label="Increase">&plus;</button>
+                </div>
+              </quantity-input>
+            </div>
+
+            <div class="buy_buttons_container">
+              <button
+                class="buy_button add_to_cart_btn"
+                {% if request.page_type != 'cart' %}
+                  data-id="#js_cart_popup"
+                {% endif %}
+                title="{{'cart.general.title' | t}}"
+              >
+                {% if product.available %}
+                  ADD TO CART
+                {% else %}
+                  SOLD OUT
+                {% endif %}
+              </button>
+              <!-- <button class="buy_button buy_now_button"><a href="/checkout">BUY NOW</a></button> -->
+              <!--
+                <form action="/checkout" method="post">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <input type="submit" class="buy_button buy_now_button" value="BUY NOW">
+                </form>
+              -->
+
+              <button class="buy_button buy_now_button" onclick="buyNow()">BUY NOW</button>
+            </div>
+            <div class="link product__view-details">
+              <a href="{{ product.url }}" role="link" aria-disabled="true">View full details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="//threadvibeliving.com/cdn/shop/t/5/assets/jquery.min.js?v=8324501383853434791698214438"></script>
+  <script>
+     document.addEventListener("DOMContentLoaded", function () {
+          const sectionId = "{{ section.id }}"; // Unique identifier for each section
+          const addToCartButton = $(".add_to_cart_btn", "#" + sectionId);
+          const buyNowButton = $(".buy_now_button", "#" + sectionId);
+
+          if (addToCartButton.length) {
+            addToCartButton.on("click", function () {
+              const productId = "{{ product.selected_or_first_available_variant.id }}";
+              const quantity = $(".input-box", "#" + sectionId).val();
+              console.log("Add to Cart clicked - Product ID:", productId, "Quantity:", quantity);
+              addToCart(productId, quantity, false);
+            });
+          }
+
+          if (buyNowButton.length) {
+            buyNowButton.on("click", function () {
+              const productId = "{{ product.selected_or_first_available_variant.id }}";
+              const quantity = $(".input-box", "#" + sectionId).val();
+              console.log("Buy Now clicked - Product ID:", productId, "Quantity:", quantity);
+              buyNowBtn(productId, quantity, true);
+            });
+          }
+
+          function addToCart(productId, quantity, redirectToCheckout) {
+          console.log("Adding to cart - Product ID:", productId, "Quantity:", quantity);
+
+          $.ajax({
+            type: "POST",
+            url: "/cart/add.js",
+            cache: false,
+            data: { quantity: quantity, id: productId },
+            dataType: "json",
+            success: function (data) {
+              console.log('Success:', data);
+              $('html').addClass('hside_opened pside_opened');
+              $('.cart-block').load(location.href + " .cart-block");
+              $('.hero_canvas').load(location.href + " .hero_canvas");
+              $('#js_cart_popup').load(location.href + " #js_cart_popup ");
+              $('#js_cart_popup').addClass('act_opened');
+
+              // If you want to redirect to the checkout page, you can do it here
+              // if (redirectToCheckout) {
+              //   window.location.href = "/checkout";
+              // }
+            },
+            error: function (xhr, ajaxOption, thrownError) {
+              console.log("Error adding product to cart", thrownError);
+              console.log("Server response:", xhr.responseText);
+              console.log('Product ID:', productId);
+              console.log('Quantity:', quantity);
+            }
+          });
+        }
+
+        function buyNowBtn(productId, quantity, redirectToCheckout) {
+          console.log("Adding to cart - Product ID:", productId, "Quantity:", quantity);
+
+          $.ajax({
+            type: "POST",
+            url: "/cart/add.js",
+            cache: false,
+            data: { quantity: quantity, id: productId },
+            dataType: "json",
+            success: function (data) {
+              console.log('Success:', data);
+              $('html').addClass('hside_opened pside_opened');
+              $('.cart-block').load(location.href + " .cart-block");
+
+              // If you want to redirect to the checkout page, you can do it here
+              if (redirectToCheckout) {
+                window.location.href = "/checkout";
+              }
+            },
+            error: function (xhr, ajaxOption, thrownError) {
+              console.log("Error adding product to cart", thrownError);
+              console.log("Server response:", xhr.responseText);
+              console.log('Product ID:', productId);
+              console.log('Quantity:', quantity);
+            }
+          });
+        }
+      });
+
+
+
+
+    {% comment %} document.addEventListener("DOMContentLoaded", function () {
+       const sectionId = "{{ section.id }}"; // Unique identifier for each section
+        const addToCartButton = $(".add_to_cart_btn");
+        const buyNowButton = $(".buy_now_button");
+
+        if (addToCartButton.length) {
+          addToCartButton.on("click", function () {
+            const productId = "{{ product.selected_or_first_available_variant.id }}";
+            const quantity = $(".input-box").val();
+            console.log("Add to Cart clicked - Product ID:", productId, "Quantity:", quantity);
+            addToCart(productId, quantity, false);
+          });
+        }
+
+        if (buyNowButton.length) {
+          buyNowButton.on("click", function () {
+            const productId = "{{ product.selected_or_first_available_variant.id }}";
+            const quantity = $(".input-box").val();
+            console.log("Buy Now clicked - Product ID:", productId, "Quantity:", quantity);
+            buyNowBtn(productId, quantity, true);
+          });
+        }
+
+        function addToCart(productId, quantity, redirectToCheckout) {
+          console.log("Adding to cart - Product ID:", productId, "Quantity:", quantity);
+
+          $.ajax({
+            type: "POST",
+            url: "/cart/add.js",
+            cache: false,
+            data: { quantity: quantity, id: productId },
+            dataType: "json",
+            success: function (data) {
+              console.log('Success:', data);
+              $('html').addClass('hside_opened pside_opened');
+              $('.cart-block').load(location.href + " .cart-block");
+              $('.hero_canvas').load(location.href + " .hero_canvas");
+              $('#js_cart_popup').load(location.href + " #js_cart_popup ");
+              $('#js_cart_popup').addClass('act_opened');
+
+              // If you want to redirect to the checkout page, you can do it here
+              // if (redirectToCheckout) {
+              //   window.location.href = "/checkout";
+              // }
+            },
+            error: function (xhr, ajaxOption, thrownError) {
+              console.log("Error adding product to cart", thrownError);
+              console.log("Server response:", xhr.responseText);
+              console.log('Product ID:', productId);
+              console.log('Quantity:', quantity);
+            }
+          });
+        }
+
+        function buyNowBtn(productId, quantity, redirectToCheckout) {
+          console.log("Adding to cart - Product ID:", productId, "Quantity:", quantity);
+
+          $.ajax({
+            type: "POST",
+            url: "/cart/add.js",
+            cache: false,
+            data: { quantity: quantity, id: productId },
+            dataType: "json",
+            success: function (data) {
+              console.log('Success:', data);
+              $('html').addClass('hside_opened pside_opened');
+              $('.cart-block').load(location.href + " .cart-block");
+
+              // If you want to redirect to the checkout page, you can do it here
+              if (redirectToCheckout) {
+                window.location.href = "/checkout";
+              }
+            },
+            error: function (xhr, ajaxOption, thrownError) {
+              console.log("Error adding product to cart", thrownError);
+              console.log("Server response:", xhr.responseText);
+              console.log('Product ID:', productId);
+              console.log('Quantity:', quantity);
+            }
+          });
+        }
+      }); {% endcomment %}
+  </script>
+
+{% else %}
+  <p>Please select a product</p>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured Product 2",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "sec_imgs",
+      "label": "Section Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+        "type": "range",
+        "id": "padding-top",
+        "label": "Padding Top",
+        "default": 30,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom",
+        "label": "Padding Bottom",
+        "default": 30,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product 2"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+     document.addEventListener("DOMContentLoaded", function () {
+      $(".featured_product").each(function () {
+        const quantityContainer = $(this).find(".quantity");
+        const minusBtn = $(this).find(".minus");
+        const plusBtn = $(this).find(".plus");
+        const inputBox = $(this).find(".input-box");
+
+        updateButtonStates();
+
+        quantityContainer.on("click", handleButtonClick);
+        inputBox.on("input", handleQuantityChange);
+
+        function updateButtonStates() {
+          const value = parseInt(inputBox.val());
+          minusBtn.prop("disabled", value <= 1);
+          plusBtn.prop("disabled", value >= parseInt(inputBox.attr("max")));
+        }
+
+        function handleButtonClick(event) {
+          if ($(event.target).hasClass("minus")) {
+            decreaseValue();
+          } else if ($(event.target).hasClass("plus")) {
+            increaseValue();
+          }
+        }
+
+        function decreaseValue() {
+          let value = parseInt(inputBox.val());
+          value = isNaN(value) ? 1 : Math.max(value - 1, 1);
+          inputBox.val(value);
+          updateButtonStates();
+          handleQuantityChange();
+        }
+
+        function increaseValue() {
+          let value = parseInt(inputBox.val());
+          value = isNaN(value) ? 1 : Math.min(value + 1, parseInt(inputBox.attr("max")));
+          inputBox.val(value);
+          updateButtonStates();
+          handleQuantityChange();
+        }
+
+        function handleQuantityChange() {
+          let value = parseInt(inputBox.val());
+          value = isNaN(value) ? 1 : value;
+
+          // Execute your code here based on the updated quantity value
+          console.log("Quantity changed:", value);
+        }
+      });
+    });
+  // ===================================================================================================
+  // (function () {
+  //   const quantityContainer = document.querySelector(".quantity");
+  //   const minusBtn = quantityContainer.querySelector(".minus");
+  //   const plusBtn = quantityContainer.querySelector(".plus");
+  //   const inputBox = quantityContainer.querySelector(".input-box");
+
+  //   updateButtonStates();
+
+  //   quantityContainer.addEventListener("click", handleButtonClick);
+  //   inputBox.addEventListener("input", handleQuantityChange);
+
+  //   function updateButtonStates() {
+  //     const value = parseInt(inputBox.value);
+  //     minusBtn.disabled = value <= 1;
+  //     plusBtn.disabled = value >= parseInt(inputBox.max);
+  //   }
+
+  //   function handleButtonClick(event) {
+  //     if (event.target.classList.contains("minus")) {
+  //       decreaseValue();
+  //     } else if (event.target.classList.contains("plus")) {
+  //       increaseValue();
+  //     }
+  //   }
+
+  //   function decreaseValue() {
+  //     let value = parseInt(inputBox.value);
+  //     value = isNaN(value) ? 1 : Math.max(value - 1, 1);
+  //     inputBox.value = value;
+  //     updateButtonStates();
+  //     handleQuantityChange();
+  //   }
+
+  //   function increaseValue() {
+  //     let value = parseInt(inputBox.value);
+  //     value = isNaN(value) ? 1 : Math.min(value + 1, parseInt(inputBox.max));
+  //     inputBox.value = value;
+  //     updateButtonStates();
+  //     handleQuantityChange();
+  //   }
+
+  //   function handleQuantityChange() {
+  //     let value = parseInt(inputBox.value);
+  //     value = isNaN(value) ? 1 : value;
+
+  //     // Execute your code here based on the updated quantity value
+  //     console.log("Quantity changed:", value);
+  //   }
+  // })();
+{% endjavascript %}
