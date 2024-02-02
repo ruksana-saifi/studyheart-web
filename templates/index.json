@@ -131,10 +131,20 @@
             "btnurl": "",
             "btn": "Read More"
           }
+        },
+        "select_mWbKUe": {
+          "type": "select",
+          "settings": {
+            "title": "",
+            "subtitle": "",
+            "btnurl": "",
+            "btn": "Read More"
+          }
         }
       },
       "block_order": [
-        "select_QbqT3Y"
+        "select_QbqT3Y",
+        "select_mWbKUe"
       ],
       "settings": {
         "maintitle": "Main title"
