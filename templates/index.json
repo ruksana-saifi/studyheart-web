@@ -148,7 +148,7 @@
       ],
       "settings": {
         "bg-color": "#00c6ff",
-        "maintitle": "Main title"
+        "padding": 100
       }
     }
   },
