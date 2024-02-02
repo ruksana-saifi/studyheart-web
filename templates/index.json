@@ -121,12 +121,23 @@
     },
     "demo_w3tDbr": {
       "type": "demo",
+      "blocks": {
+        "select_QbqT3Y": {
+          "type": "select",
+          "settings": {
+            "imgtag": "shopify:\/\/shop_images\/WhatsAppImage2023-08-28at2-04-20PM-_1.jpg",
+            "title": "",
+            "subtitle": "",
+            "btnurl": "",
+            "btn": "Read More"
+          }
+        }
+      },
+      "block_order": [
+        "select_QbqT3Y"
+      ],
       "settings": {
-        "imgtag": "shopify:\/\/shop_images\/WhatsAppImage2023-08-28at2-04-20PM-_1.jpg",
-        "title": "Testing Here",
-        "subtitle": "Sub title",
-        "btnurl": "shopify:\/\/collections",
-        "btn": "Read more"
+        "maintitle": "Main title"
       }
     }
   },
