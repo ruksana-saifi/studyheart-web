@@ -1,4 +1,5 @@
 <div class="page-width p-5">
+  <h1>{{ section.settings.maintitle }}</h1>
   {% for block in section.blocks %}
   <div class="card" style="width: 18rem;">
     <img src="{{ block.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
@@ -14,7 +15,13 @@
 {% schema %}
 {
   "name": "demo 1",
-  "settings": [],
+  "settings": [
+    {
+          "type": "text",
+          "id": "maintitle",
+          "label": "Title Here"
+        }
+  ],
   "blocks": [
     {
       "name": "Cards",
