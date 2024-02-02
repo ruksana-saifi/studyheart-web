@@ -1,6 +1,6 @@
 <div class="page-width p-5 ">
   <div class="card" style="width: 18rem;">
-  <img src="{{ section.settings.imgtag }}" class="card-img-top" alt="..." width="" height="">
+  <img src="{{ section.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
   <div class="card-body">
     <h5 class="card-title">{{ section.settings.title }}</h5>
     <p class="card-text">{{ section.settings.subtitle }}</p>
@@ -20,7 +20,7 @@
        {
         "type": "image_picker",
         "id": "imgtag",
-        "label": "Title Here"
+        "label": "Upload Image"
       },
       {
         "type": "text",
