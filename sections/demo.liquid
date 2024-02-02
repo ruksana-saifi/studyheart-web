@@ -7,12 +7,14 @@
 {% endstyle %}
 
 <div class="container page-width">
-  {% assign name = "Tobi" %}
+  {% assign name = "Loki" %}
 
 {% if name == "Tobi" %}
   This text will always appear since "name" is defined.
+  {% elsif name == "Loki" %}
+  HI df
   {% else %}
-  HI
+  Hello
 {% endif %}
   <h1>{{ section.settings.maintitle }}</h1>
 
