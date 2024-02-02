@@ -2,10 +2,11 @@
   .container{
     background-color: {{ section.settings.bg-color }};
     padding: {{ section.settings.padding }}px;
+    margin: {{ section.settings.margin }};
   }
 {% endstyle %}
 
-<div class="container page-width mt-5 mb-0">
+<div class="container page-width">
   <h1>{{ section.settings.maintitle }}</h1>
 
   <div class="row">
@@ -35,6 +36,11 @@
           "type": "color",
           "id": "bg-color",
           "label": "BG Color"
+    },
+     {
+          "type": "text",
+          "id": "margin",
+          "label": "Margin"
     },
     {
       "type": "range",
