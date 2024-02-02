@@ -7,8 +7,12 @@
 {% endstyle %}
 
 <div class="container page-width">
-  {{ 'Ruksana' | slice: 0, 2 }}
-  {{ '' | slice: 3, 5 }}
+{% capture string_with_newlines %}
+Hello
+there
+{% endcapture %}
+
+{{ string_with_newlines | newline_to_br }}
 
 
   {% assign my_array = "apples oranges peaches, plums apples, oranges, apples, oranges, peaches, plums, apples, oranges, peaches, plums" | split: ", " %}
