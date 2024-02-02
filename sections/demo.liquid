@@ -7,70 +7,10 @@
 {% endstyle %}
 
 <div class="container page-width">
-  {% assign my_counter = "10" %}
+ {% raw %}
+In Handlebars, {{ this }} will be HTML-escaped, but {{{ that }}} will not.
+{% endraw %}
 
-{% if 
-  name == "Tobi" 
-%}
-{% liquid
-  # this is a comment
-  assign topic = 'Learning about comments!'
-  echo topic 
-%}
-  This text will always appear since "{{ name }}" is defined.
-  {% elsif name == "Loki" %}
-  HI {{ name }}
-  {% else %}
-  Hello {{ name }}
-{% endif %}
-{{ my_counter }}
-
-  
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-{% increment my_counter %}
-<br>
-  {% assign age = '23' %}
-  {% assign food = 'pizza' %}
-{% capture aboutme %}  I am {{ age }} my favorite food is {{ food }} {% endcapture %}
-  {{ aboutme }}
   
   <h1>{{ section.settings.maintitle }}</h1>
 
