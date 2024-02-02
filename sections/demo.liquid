@@ -1,15 +1,21 @@
 <div class="page-width p-5">
   <h1>{{ section.settings.maintitle }}</h1>
-  {% for var in section.blocks %}
-  <div class="card" style="width: 18rem;">
-    <img src="{{ var.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
-    <div class="card-body">
-      <h5 class="card-title">{{ var.settings.title }}</h5>
-      <p class="card-text">{{ var.settings.subtitle }}</p>
-      <a href="{{ var.settings.btnurl }}" class="btn btn-primary">{{ var.settings.btn }}</a>
+
+  <div class="row">
+     <div class="col-md-4">
+     {% for var in section.blocks %}
+        <div class="card" style="width: 18rem;">
+          <img src="{{ var.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
+          <div class="card-body">
+            <h5 class="card-title">{{ var.settings.title }}</h5>
+            <p class="card-text">{{ var.settings.subtitle }}</p>
+            <a href="{{ var.settings.btnurl }}" class="btn btn-primary">{{ var.settings.btn }}</a>
+          </div>
+        </div>
+        {% endfor %}
     </div>
   </div>
-  {% endfor %}
+ 
 </div>
 
 {% schema %}
