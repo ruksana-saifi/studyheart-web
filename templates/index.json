@@ -147,6 +147,7 @@
         "select_mWbKUe"
       ],
       "settings": {
+        "bg-color": "#ffce00",
         "maintitle": "Main title"
       }
     }
