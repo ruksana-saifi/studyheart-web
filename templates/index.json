@@ -122,7 +122,15 @@
     "demo_w3tDbr": {
       "type": "demo",
       "settings": {
-        "title": "Testing Here"
+        "title": "Testing Here",
+        "subtitle": "Sub title"
+      }
+    },
+    "demo_eQhkP3": {
+      "type": "demo",
+      "settings": {
+        "title": "",
+        "subtitle": ""
       }
     }
   },
@@ -132,6 +140,7 @@
     "just_for_testing_zfzrEg",
     "featured_product2_eirJhY",
     "b2b_form_cFYi9t",
-    "demo_w3tDbr"
+    "demo_w3tDbr",
+    "demo_eQhkP3"
   ]
 }
