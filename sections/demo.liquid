@@ -1,5 +1,5 @@
-<div class="page-width p-5 ">
-  {% for block in section.block %}
+<div class="page-width p-5">
+  {% for block in section.blocks %}
   <div class="card" style="width: 18rem;">
     <img src="{{ block.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
     <div class="card-body">
@@ -8,56 +8,51 @@
       <a href="{{ block.settings.btnurl }}" class="btn btn-primary">{{ block.settings.btn }}</a>
     </div>
   </div>
-{% endfor %}
+  {% endfor %}
 </div>
 
-
-
-
 {% schema %}
-  {
-    "name": "demo 1",
-    "settings": [
-       
-    ],
-    "blocks": [
-      {
-        "name": "Cards",
-        "type": "select",
-        "settings": [
-              {
-            "type": "image_picker",
-            "id": "imgtag",
-            "label": "Upload Image"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title Here"
-          },
-          {
-            "type": "textarea",
-            "id": "subtitle",
-            "label": "Sub Title Here"
-          },
-          {
-            "type": "url",
-            "id": "btnurl",
-            "label": "Button URL"
-          },
-          {
-            "type": "text",
-            "id": "btn",
-            "label": "Button Label",
-            "default": "Read More"
-          } 
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "demo"
-      }
-    ]
-  }
+{
+  "name": "demo 1",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "Cards",
+      "type": "select",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "imgtag",
+          "label": "Upload Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title Here"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Sub Title Here"
+        },
+        {
+          "type": "url",
+          "id": "btnurl",
+          "label": "Button URL"
+        },
+        {
+          "type": "text",
+          "id": "btn",
+          "label": "Button Label",
+          "default": "Read More"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "demo"
+    }
+  ]
+}
 {% endschema %}
