@@ -7,18 +7,6 @@
 {% endstyle %}
 
 <div class="container page-width">
-{% capture string_with_newlines %}
-
-{% endcapture %}
-
-{{ string_with_newlines | newline_to_br }}
-
-
-  {% assign my_array = "apples oranges peaches, plums apples, oranges, apples, oranges, peaches, plums, apples, oranges, peaches, plums" | split: ", " %}
-
-{{ my_array.size }}
-
-  
   <h1>{{ section.settings.maintitle }}</h1>
 
   <div class="row">
