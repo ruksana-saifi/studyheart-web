@@ -1,6 +1,7 @@
 {% style %}
   .container{
-    background-color: {{ section.settings.bg-color }}
+    background-color: {{ section.settings.bg-color }};
+    padding: {{ section.settings.padding }};
   }
 {% endstyle %}
 
@@ -34,12 +35,17 @@
           "type": "color",
           "id": "bg-color",
           "label": "BG Color"
-        },
+    },
     {
-          "type": "text",
-          "id": "maintitle",
-          "label": "Title Here"
-        }
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding",
+      "default": 36
+    }
   ],
   "blocks": [
     {
