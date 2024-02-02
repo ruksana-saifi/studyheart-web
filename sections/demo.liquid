@@ -1,4 +1,10 @@
-<div class="container page-width p-5" style="background-color: {{ section.settings.bg-color }}">
+{% style %}
+  .container{
+    background-color: {{ section.settings.bg-color }}
+  }
+{% endstyle %}
+
+<div class="container page-width p-5">
   <h1>{{ section.settings.maintitle }}</h1>
 
   <div class="row">
