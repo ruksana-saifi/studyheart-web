@@ -1,4 +1,4 @@
-<h1>testing </h1>
+<h1>{{ section.settings.title }} </h1>
 
 
 
@@ -15,7 +15,13 @@
 {% schema %}
   {
     "name": "demo 1",
-    "settings": [],
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title Here"
+      } 
+    ],
     "presets": [
       {
         "name": "demo"
