@@ -7,12 +7,7 @@
 {% endstyle %}
 
 <div class="container page-width">
- {% raw %}
-In Handlebars, {{ this }} will be HTML-escaped, but {{{ that }}} will not.
-{% endraw %}
-
-  {{ "Tetsuro Takara" | url_encode }}
-  {{ "john@liquid.com" | url_encode }}
+{{ "%27Stop%21%27+said+Fred" | url_decode }}
   <h1>{{ section.settings.maintitle }}</h1>
 
   <div class="row">
