@@ -3,7 +3,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ section.settings.title }}</h5>
     <p class="card-text">{{ section.settings.subtitle }}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="{{ section.settings.btnurl }}" class="btn btn-primary">{{ section.settings.btn }}</a>
   </div>
 </div>
 
@@ -24,6 +24,16 @@
         "type": "text",
         "id": "subtitle",
         "label": "Sub Title Here"
+      },
+      {
+        "type": "url",
+        "id": "btnurl",
+        "label": "Button URL"
+      },
+      {
+        "type": "text",
+        "id": "btn",
+        "label": "Button Label"
       } 
     ],
     "presets": [
