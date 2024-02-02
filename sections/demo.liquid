@@ -9,7 +9,15 @@
 <div class="container page-width">
   {% assign my_counter = "10" %}
 
-{% if name == "Tobi" %}
+{% if 
+
+  name == "Tobi" 
+%}
+{% liquid
+  # this is a comment
+  assign topic = 'Learning about comments!'
+  echo topic 
+%}
   This text will always appear since "{{ name }}" is defined.
   {% elsif name == "Loki" %}
   HI {{ name }}
@@ -17,6 +25,8 @@
   Hello {{ name }}
 {% endif %}
 {{ my_counter }}
+
+  
 {% increment my_counter %}
 {% increment my_counter %}
 {% increment my_counter %}
