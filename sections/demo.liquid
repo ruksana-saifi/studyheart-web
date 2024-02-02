@@ -1,12 +1,12 @@
 <div class="page-width p-5">
   <h1>{{ section.settings.maintitle }}</h1>
-  {% for block in section.blocks %}
+  {% for var in section.blocks %}
   <div class="card" style="width: 18rem;">
-    <img src="{{ block.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
+    <img src="{{ var.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
     <div class="card-body">
-      <h5 class="card-title">{{ block.settings.title }}</h5>
-      <p class="card-text">{{ block.settings.subtitle }}</p>
-      <a href="{{ block.settings.btnurl }}" class="btn btn-primary">{{ block.settings.btn }}</a>
+      <h5 class="card-title">{{ var.settings.title }}</h5>
+      <p class="card-text">{{ var.settings.subtitle }}</p>
+      <a href="{{ var.settings.btnurl }}" class="btn btn-primary">{{ var.settings.btn }}</a>
     </div>
   </div>
   {% endfor %}
@@ -25,6 +25,7 @@
   "blocks": [
     {
       "name": "Cards",
+      "limit": 2,
       "type": "select",
       "settings": [
         {
