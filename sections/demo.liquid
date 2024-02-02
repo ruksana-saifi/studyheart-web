@@ -12,7 +12,7 @@
 
   {% assign my_array = "apples oranges peaches, plums apples, oranges, apples, oranges, peaches, plums, apples, oranges, peaches, plums" | split: ", " %}
 
-{{ my_array.size }}
+{{ my_array.size | slice }}
 
   
   <h1>{{ section.settings.maintitle }}</h1>
