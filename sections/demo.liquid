@@ -17,7 +17,8 @@
   Hello {{ name }}
 {% endif %}
 
-  
+{% capture aboutme %}  I am {{ age }} my favorite food is {{ food }} {% endcapture %}
+  {{ aboutme }}
   <h1>{{ section.settings.maintitle }}</h1>
 
   <div class="row">
