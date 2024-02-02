@@ -110,6 +110,16 @@
       "type": "b2b-form",
       "settings": {
       }
+    },
+    "demo_w3tDbr": {
+      "type": "demo",
+      "settings": {
+      }
+    },
+    "demo_8HLcTT": {
+      "type": "demo",
+      "settings": {
+      }
     }
   },
   "order": [
@@ -117,6 +127,8 @@
     "featured_collection",
     "just_for_testing_zfzrEg",
     "featured_product2_eirJhY",
-    "b2b_form_cFYi9t"
+    "b2b_form_cFYi9t",
+    "demo_w3tDbr",
+    "demo_8HLcTT"
   ]
 }
