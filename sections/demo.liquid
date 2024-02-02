@@ -8,7 +8,13 @@
 
 <div class="container page-width">
   {{ 'Ruksana!' | size  }}
-{{ "%27Ruksana%21%27+saifi+g" | url_decode }}
+
+
+  {% assign my_array = "apples, oranges, peaches, plums, apples, oranges, apples, oranges, peaches, plums, apples, oranges, peaches, plums" | split: ", " %}
+
+{{ my_array.size }}
+
+  
   <h1>{{ section.settings.maintitle }}</h1>
 
   <div class="row">
