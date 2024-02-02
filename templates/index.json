@@ -122,6 +122,7 @@
     "demo_w3tDbr": {
       "type": "demo",
       "settings": {
+        "imgtag": "shopify:\/\/shop_images\/WhatsAppImage2023-08-28at2-04-20PM-_1.jpg",
         "title": "Testing Here",
         "subtitle": "Sub title",
         "btnurl": "shopify:\/\/collections",
