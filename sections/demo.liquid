@@ -1,11 +1,11 @@
 <div class="page-width p-5 ">
   {% for block in section.block %}
   <div class="card" style="width: 18rem;">
-    <img src="{{ section.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
+    <img src="{{ block.settings.imgtag | image_url }}" class="card-img-top" alt="..." width="" height="">
     <div class="card-body">
-      <h5 class="card-title">{{ section.settings.title }}</h5>
-      <p class="card-text">{{ section.settings.subtitle }}</p>
-      <a href="{{ section.settings.btnurl }}" class="btn btn-primary">{{ section.settings.btn }}</a>
+      <h5 class="card-title">{{ block.settings.title }}</h5>
+      <p class="card-text">{{ block.settings.subtitle }}</p>
+      <a href="{{ block.settings.btnurl }}" class="btn btn-primary">{{ block.settings.btn }}</a>
     </div>
   </div>
 {% endfor %}
