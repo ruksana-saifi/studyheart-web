@@ -1,5 +1,10 @@
 <div class="page-width">
-  
+  {% form 'contact' %}
+     <input type="text" name="name" placeholder="Your Name" required>
+     <input type="email" name="email" placeholder="Your Email" required>
+     <textarea name="message" placeholder="Your Message" required></textarea>
+     <button type="submit">Submit</button>
+  {% endform %}
 </div>
 
 {% schema %}
