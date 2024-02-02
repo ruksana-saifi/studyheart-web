@@ -148,7 +148,7 @@
       ],
       "settings": {
         "bg-color": "#00c6ff",
-        "margin": "10px 0 10px 0",
+        "margin": "",
         "padding": 56
       }
     }
