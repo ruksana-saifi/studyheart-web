@@ -3,48 +3,16 @@
     "top_categories_DbqRp9": {
       "type": "top-categories",
       "blocks": {
-        "select_Lf7AJg": {
-          "type": "select",
-          "settings": {
-            "title": "Tab Title",
-            "sub_collections": ""
-          }
-        },
-        "select_CDcR6F": {
-          "type": "select",
-          "settings": {
-            "title": "edff",
-            "sub_collections": "kurti,"
-          }
-        },
         "select_twfPFU": {
           "type": "select",
           "settings": {
             "title": "",
             "sub_collections": "{{ collection.metafields.custom.parent_collection_name.value }}"
           }
-        },
-        "select_jU8bWM": {
-          "type": "select",
-          "settings": {
-            "title": "",
-            "sub_collections": ""
-          }
-        },
-        "select_PVahz7": {
-          "type": "select",
-          "settings": {
-            "title": "",
-            "sub_collections": ""
-          }
         }
       },
       "block_order": [
-        "select_Lf7AJg",
-        "select_CDcR6F",
-        "select_twfPFU",
-        "select_jU8bWM",
-        "select_PVahz7"
+        "select_twfPFU"
       ],
       "settings": {
       }
