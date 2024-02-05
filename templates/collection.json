@@ -5,9 +5,11 @@
       "blocks": {
         "select_twfPFU": {
           "type": "select",
+          "repeater": "{{ collection.metafields.custom.collection_sub_category.value }}",
           "settings": {
-            "title": "",
-            "sub_collections": ""
+            "img": "{{ block.repeater.image.value }}",
+            "title": "{{ block.repeater.title.value }}",
+            "url": ""
           }
         }
       },
