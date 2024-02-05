@@ -1,10 +1,22 @@
+{% assign collection_id = '478716625213' %} {# Replace with your collection ID #}
+
 <div class="page-width">
-  {% for block in section.blocks %}
-    <h1>{{ block.settings.title }}</h1>
-    <div id="subCollectionsContainer{{ forloop.index }}">
-     {{ collection.metafields.custom.sub_collections }}
-    </div>
-  {% endfor %}
+  <h1>Sub Collections</h1>
+  <div id="subCollectionsContainer">
+    {% assign collection = collections[collection_id] %}
+    {% if collection %}
+      {% assign subCollections = collection.metafields.custom.sub_collections %}
+      {% if subCollections %}
+        {% for subCollection in subCollections %}
+          <h2>{{ subCollection.title }}</h2>
+        {% endfor %}
+      {% else %}
+        <p>No sub-collections found.</p>
+      {% endif %}
+    {% else %}
+      <p>Collection not found.</p>
+    {% endif %}
+  </div>
 </div>
 
 {% schema %}
