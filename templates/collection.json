@@ -13,6 +13,27 @@
         "select_CDcR6F": {
           "type": "select",
           "settings": {
+            "title": "edff",
+            "sub_collections": ""
+          }
+        },
+        "select_twfPFU": {
+          "type": "select",
+          "settings": {
+            "title": "",
+            "sub_collections": ""
+          }
+        },
+        "select_jU8bWM": {
+          "type": "select",
+          "settings": {
+            "title": "",
+            "sub_collections": ""
+          }
+        },
+        "select_PVahz7": {
+          "type": "select",
+          "settings": {
             "title": "",
             "sub_collections": ""
           }
@@ -20,7 +41,10 @@
       },
       "block_order": [
         "select_Lf7AJg",
-        "select_CDcR6F"
+        "select_CDcR6F",
+        "select_twfPFU",
+        "select_jU8bWM",
+        "select_PVahz7"
       ],
       "settings": {
       }
