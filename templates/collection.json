@@ -2,11 +2,21 @@
   "sections": {
     "top_categories_DbqRp9": {
       "type": "top-categories",
+      "blocks": {
+        "select_iG39m7": {
+          "type": "select",
+          "settings": {
+            "title": "title",
+            "bean-bag": "",
+            "water_bottle": ""
+          }
+        }
+      },
+      "block_order": [
+        "select_iG39m7"
+      ],
       "disabled": true,
       "settings": {
-        "title": "",
-        "bean-bag": "Bean Bag,Sofa Mudda,Football Bean Bag,Teardrop Bean Bag,Lounger Bean Bag,Mudda Bean Bag Sofa With Beans",
-        "water_bottle": "Copper Bottle Plain,Copper Bottle Printed,Copper Bottle With Glass,Copper Bottle,Plain Bottle"
       }
     },
     "banner": {
