@@ -3,18 +3,18 @@
     "top_categories_DbqRp9": {
       "type": "top-categories",
       "blocks": {
-        "select_twfPFU": {
+        "select_UVRkcy": {
           "type": "select",
           "repeater": "{{ collection.metafields.custom.collection_sub_category.value }}",
           "settings": {
             "img": "{{ block.repeater.image.value }}",
             "title": "{{ block.repeater.title.value }}",
-            "url": ""
+            "url": "{{ block.repeater.url.value }}"
           }
         }
       },
       "block_order": [
-        "select_twfPFU"
+        "select_UVRkcy"
       ],
       "settings": {
       }
