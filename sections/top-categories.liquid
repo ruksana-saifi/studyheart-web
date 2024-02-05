@@ -3,7 +3,7 @@
     <h1>{{ block.settings.title }}</h1>
     <div id="subCollectionsContainer{{ forloop.index }}">
       {% assign subCollections = collection.metafields.custom.sub_collections  | remove: 'gid://shopify/Collection/' %}
-    {{ collection.id }}
+ 
       {% if subCollections.size > 0 %}
         {% for subCollection in subCollections %}
           <h2>{{ subCollection }}</h2>
@@ -47,7 +47,7 @@
 {% javascript %}
 document.addEventListener("DOMContentLoaded", function() {
   // Fetch collection data
-  fetch('https://studyheart.myshopify.com/admin/api/2024-01/collections/478716625213.json', {
+  fetch('https://studyheart.myshopify.com/admin/api/2024-01/collections/{{ subCollections }}.json', {
     method: 'GET',
     headers: {
       'Authorization': 'Basic ' + btoa('2f522bfa6c7b7a13d66abb73aaf3b579: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')
