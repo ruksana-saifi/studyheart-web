@@ -1,16 +1,15 @@
 <div class="page-width">
+  <h1>{{ section.settings.maintitle }}</h1>
   {% for block in section.blocks %}
-    <h1>{{ block.settings.title }}</h1>
-    <div id="subCollectionsContainer{{ forloop.index }}">
-      {% assign subCollections = block.settings.sub_collections | split: ',' %}
-      {% if subCollections.size > 0 %}
-        {% for subCollection in subCollections %}
-          <h2>{{ subCollection }}</h2>
-        {% endfor %}
-      {% else %}
-        <p>No sub-collections found.</p>
-      {% endif %}
+    <div>
+     <a href="{{ block.settings.url }}">
+        <img src="{{ block.settings.img | image_url}}" alt="{{ page.title }}" width="" height="">
+        <h2>{{ block.settings.title }}</h2>
+     </a>
+      
     </div>
+    
+   
   {% endfor %}
 </div>
 
