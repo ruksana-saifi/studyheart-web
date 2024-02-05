@@ -1,14 +1,52 @@
 <div class="page-width">
   {% for block in section.blocks %}
-    <h1>{{ block.settings.title }}</h1>
-    <div id="subCollectionsContainer{{ forloop.index }}">
-      <!-- Container to display sub-collection titles -->
-    </div>
+ <h1> {{ block.settings.title }}</h1>
+  {{ collection.metafields.custom.sub_collections }}
+
+  {% assign sub_collections = collection.metafields.custom.sub_collections %}
+    {% if sub_collections %}
+      {% for sub_collection in sub_collections %}
+        {{ sub_collection.title }}
+      {% endfor %}
+    {% endif %}
+
   {% endfor %}
 </div>
 
+
+
+{% schema %}
+{
+  "name": "Top Category",
+  "settings": [
+    
+  ],
+  "blocks": [
+    {
+      "name": "Collection Cetegories",
+      "type": "select",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+    "name": "Top Category"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
 {% javascript %}
-document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
   // Make the API request
   fetch('https://studyheart.myshopify.com/admin/api/2024-01/collections/478716625213.json', {
     method: 'GET',
@@ -18,15 +56,17 @@ document.addEventListener("DOMContentLoaded", function() {
   })
   .then(response => response.json())
   .then(data => {
-    // Extract the title from the response
-    const title = data.collection.title;
-    
-    // Display the title in the appropriate container
-    const subCollectionsContainer = document.getElementById('subCollectionsContainer1'); // Adjust the index as needed
+    // Extract the sub-collections from the response
+    const subCollections = data.collection.metafields.custom.sub_collections;
+
+    // Display the titles of sub-collections
+    const subCollectionsContainer = document.getElementById('subCollectionsContainer');
     if (subCollectionsContainer) {
-      const titleElement = document.createElement('h2');
-      titleElement.textContent = title;
-      subCollectionsContainer.appendChild(titleElement);
+      subCollections.forEach(subCollection => {
+        const titleElement = document.createElement('h2');
+        titleElement.textContent = subCollection.title;
+        subCollectionsContainer.appendChild(titleElement);
+      });
     }
   })
   .catch(error => {
