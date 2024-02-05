@@ -14,14 +14,14 @@
           "type": "select",
           "settings": {
             "title": "edff",
-            "sub_collections": ""
+            "sub_collections": "kurti,"
           }
         },
         "select_twfPFU": {
           "type": "select",
           "settings": {
             "title": "",
-            "sub_collections": ""
+            "sub_collections": "{{ collection.metafields.custom.parent_collection_name.value }}"
           }
         },
         "select_jU8bWM": {
