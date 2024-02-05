@@ -7,7 +7,7 @@
           "type": "select",
           "settings": {
             "title": "",
-            "sub_collections": "{{ collection.metafields.custom.parent_collection_name.value }}"
+            "sub_collections": ""
           }
         }
       },
