@@ -2,9 +2,7 @@
   {% for block in section.blocks %}
     <h1>{{ block.settings.title }}</h1>
     <div id="subCollectionsContainer{{ forloop.index }}">
-      {% assign subCollections = collection.metafields.custom.sub_collections  | remove: 'gid://shopify/Collection/' %}
-      {% assign collection_id = subCollections  | split: ',' %}
- {{ collection_id }}
+      {% assign subCollections = block.settings.sub_collections | split: ',' %}
       {% if subCollections.size > 0 %}
         {% for subCollection in subCollections %}
           <h2>{{ subCollection }}</h2>
@@ -15,6 +13,7 @@
     </div>
   {% endfor %}
 </div>
+
 {% schema %}
 {
   "name": "Top Category",
@@ -47,40 +46,41 @@
 
 {% javascript %}
 document.addEventListener("DOMContentLoaded", function() {
-  // Fetch collection data
-  fetch('https://studyheart.myshopify.com/admin/api/2024-01/collections/{{ collection_id }}.json', {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Basic ' + btoa('2f522bfa6c7b7a13d66abb73aaf3b579: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')
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    const title = data.collection.title;
-    const subCollections = data.collection.metafields.custom.sub_collections;
-    
-    const subCollectionsContainer = document.getElementById('subCollectionsContainer1'); // Adjust the ID as needed
-    if (subCollectionsContainer) {
-      const titleElement = document.createElement('h2');
-      titleElement.textContent = title;
-      subCollectionsContainer.appendChild(titleElement);
-      
-      if (subCollections && subCollections.length > 0) {
-        subCollections.forEach(subCollection => {
-          const subCollectionElement = document.createElement('h3');
-          subCollectionElement.textContent = subCollection.title;
-          subCollectionsContainer.appendChild(subCollectionElement);
-        });
-      } else {
-        const noSubCollectionsElement = document.createElement('p');
-        noSubCollectionsElement.textContent = 'No sub-collections found.';
-        subCollectionsContainer.appendChild(noSubCollectionsElement);
+  {% for block in section.blocks %}
+    // Fetch collection data for each block
+    fetch('https://studyheart.myshopify.com/admin/api/2024-01/collections/{{ block.settings.sub_collections }}.json', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Basic ' + btoa('2f522bfa6c7b7a13d66abb73aaf3b579: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')
       }
-    }
-  })
-  .catch(error => {
-    console.error('Error fetching collection:', error);
-  });
+    })
+    .then(response => response.json())
+    .then(data => {
+      const title = data.collection.title;
+      const subCollections = data.collection.metafields.custom.sub_collections;
+      
+      const subCollectionsContainer = document.getElementById('subCollectionsContainer{{ forloop.index }}');
+      if (subCollectionsContainer) {
+        const titleElement = document.createElement('h2');
+        titleElement.textContent = title;
+        subCollectionsContainer.appendChild(titleElement);
+        
+        if (subCollections && subCollections.length > 0) {
+          subCollections.forEach(subCollection => {
+            const subCollectionElement = document.createElement('h3');
+            subCollectionElement.textContent = subCollection.title;
+            subCollectionsContainer.appendChild(subCollectionElement);
+          });
+        } else {
+          const noSubCollectionsElement = document.createElement('p');
+          noSubCollectionsElement.textContent = 'No sub-collections found.';
+          subCollectionsContainer.appendChild(noSubCollectionsElement);
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching collection:', error);
+    });
+  {% endfor %}
 });
-
 {% endjavascript %}
