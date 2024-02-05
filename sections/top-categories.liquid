@@ -1,7 +1,7 @@
 <div class="page-width">
   {% for block in section.blocks %}
     <h1>{{ block.settings.title }}</h1>
-    <div id="subCollectionsContainer">
+    <div id="subCollectionsContainer1">
       {% assign subCollections = block.settings.sub_collections | split: ',' %}
       {% if subCollections.size > 0 %}
         {% for subCollection in subCollections %}
