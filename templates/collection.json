@@ -9,10 +9,18 @@
             "title": "Tab Title",
             "sub_collections": ""
           }
+        },
+        "select_CDcR6F": {
+          "type": "select",
+          "settings": {
+            "title": "",
+            "sub_collections": ""
+          }
         }
       },
       "block_order": [
-        "select_Lf7AJg"
+        "select_Lf7AJg",
+        "select_CDcR6F"
       ],
       "settings": {
       }
