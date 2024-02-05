@@ -6,7 +6,7 @@
         "select_Lf7AJg": {
           "type": "select",
           "settings": {
-            "title": "",
+            "title": "Tab Title",
             "sub_collections": ""
           }
         }
