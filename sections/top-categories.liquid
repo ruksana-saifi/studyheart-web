@@ -2,7 +2,7 @@
   {% for block in section.blocks %}
     <h1>{{ block.settings.title }}</h1>
     <div id="subCollectionsContainer{{ forloop.index }}">
-      {% assign subCollections = block.settings.sub_collections | split: ',' %}
+      {% assign subCollections = collection.metafields.custom.sub_collections | split: ',' %}
       {% if subCollections.size > 0 %}
         {% for subCollection in subCollections %}
           <h2>{{ subCollection }}</h2>
