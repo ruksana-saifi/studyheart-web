@@ -3,15 +3,16 @@
     "top_categories_DbqRp9": {
       "type": "top-categories",
       "blocks": {
-        "select_iG39m7": {
+        "select_Lf7AJg": {
           "type": "select",
           "settings": {
-            "title": "title"
+            "title": "",
+            "sub_collections": ""
           }
         }
       },
       "block_order": [
-        "select_iG39m7"
+        "select_Lf7AJg"
       ],
       "settings": {
       }
