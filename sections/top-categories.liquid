@@ -1,19 +1,15 @@
 <div class="page-width">
   {% for block in section.blocks %}
- <h1> {{ block.settings.title }}</h1>
-  {{ collection.metafields.custom.sub_collections }}
-
-  {% assign sub_collections = collection.metafields.custom.sub_collections %}
-    {% if sub_collections %}
-      {% for sub_collection in sub_collections %}
-        {{ sub_collection.title }}
+    <h1>{{ block.settings.title }}</h1>
+    <div id="subCollectionsContainer{{ forloop.index }}">
+      <!-- Container to display sub-collection titles -->
+      {% assign subCollections = block.settings.sub_collections | split: ',' %}
+      {% for subCollection in subCollections %}
+        <h2>{{ subCollection }}</h2>
       {% endfor %}
-    {% endif %}
-
+    </div>
   {% endfor %}
 </div>
-
-
 
 {% schema %}
 {
@@ -23,55 +19,26 @@
   ],
   "blocks": [
     {
-      "name": "Collection Cetegories",
+      "name": "Collection Categories",
       "type": "select",
       "settings": [
         {
           "type": "text",
           "id": "title",
           "label": "Tab Title"
+        },
+        {
+          "type": "text",
+          "id": "sub_collections",
+          "label": "Sub Collections (Comma Separated)"
         }
       ]
     }
   ],
   "presets": [
     {
-    "name": "Top Category"
+      "name": "Top Category"
     }
   ]
 }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-  document.addEventListener("DOMContentLoaded", function() {
-  // Make the API request
-  fetch('https://studyheart.myshopify.com/admin/api/2024-01/collections/478716625213.json', {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Basic ' + btoa('2f522bfa6c7b7a13d66abb73aaf3b579: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')
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Extract the sub-collections from the response
-    const subCollections = data.collection.metafields.custom.sub_collections;
-
-    // Display the titles of sub-collections
-    const subCollectionsContainer = document.getElementById('subCollectionsContainer');
-    if (subCollectionsContainer) {
-      subCollections.forEach(subCollection => {
-        const titleElement = document.createElement('h2');
-        titleElement.textContent = subCollection.title;
-        subCollectionsContainer.appendChild(titleElement);
-      });
-    }
-  })
-  .catch(error => {
-    console.error('Error fetching collection:', error);
-  });
-});
-
-{% endjavascript %}
