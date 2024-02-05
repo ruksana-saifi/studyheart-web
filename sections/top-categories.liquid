@@ -10,21 +10,19 @@
 
 <div class="page-width">
   <h1>{{ section.settings.maintitle }}</h1>
-  <div class="container">
-    <div class="row">
+  <div class="collection-area">
       
         {% for block in section.blocks %}
-          <div class="col-md-3">
-          <div class="collection-category_sec">
-           <a href="{{ block.settings.url }}">
-              <img src="{{ block.settings.img | image_url}}" alt="{{ page.title }}" width="" height="">
-              <h2>{{ block.settings.title }}</h2>
-           </a>
+          <div class="coll-items">
+            <div class="collection-category_sec">
+             <a href="{{ block.settings.url }}">
+                <img src="{{ block.settings.img | image_url}}" alt="{{ page.title }}" width="" height="">
+                <h2>{{ block.settings.title }}</h2>
+             </a>
+            </div>
           </div>
-        </div>
         {% endfor %}
      
-    </div>
   </div>
 </div>
 
