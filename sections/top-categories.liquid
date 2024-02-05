@@ -41,4 +41,23 @@
 {% endstylesheet %}
 
 {% javascript %}
+  // Make the API request
+fetch('https://studyheart.myshopify.com/admin/api/2024-01/collections/478716625213.json', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Basic ' + btoa('2f522bfa6c7b7a13d66abb73aaf3b579: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')
+  }
+})
+.then(response => response.json())
+.then(data => {
+  // Extract the title from the response
+  const title = data.collection.title;
+  
+  // Display the title wherever needed
+  console.log('Collection Title:', title);
+})
+.catch(error => {
+  console.error('Error fetching collection:', error);
+});
+
 {% endjavascript %}
