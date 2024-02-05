@@ -8,17 +8,10 @@
           "settings": {
             "title": "title"
           }
-        },
-        "select_LgETzB": {
-          "type": "select",
-          "settings": {
-            "title": ""
-          }
         }
       },
       "block_order": [
-        "select_iG39m7",
-        "select_LgETzB"
+        "select_iG39m7"
       ],
       "settings": {
       }
