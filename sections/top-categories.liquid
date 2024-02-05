@@ -2,6 +2,14 @@
   {% for block in section.blocks %}
  <h1> {{ block.settings.title }}</h1>
   {{ collection.metafields.custom.sub_collections }}
+
+  {% assign sub_collections = collection.metafields.custom.sub_collections %}
+    {% if sub_collections %}
+      {% for sub_collection in sub_collections %}
+        {{ sub_collection.title }}
+      {% endfor %}
+    {% endif %}
+
   {% endfor %}
 </div>
 
