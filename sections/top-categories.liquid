@@ -3,6 +3,7 @@
     <h1>{{ block.settings.title }}</h1>
     <div id="subCollectionsContainer{{ forloop.index }}">
       {% assign subCollections = collection.metafields.custom.sub_collections  | remove: 'gid://shopify/Collection/' %}
+    {{ collection.id }}
       {% if subCollections.size > 0 %}
         {% for subCollection in subCollections %}
           <h2>{{ subCollection }}</h2>
