@@ -6,14 +6,19 @@
         "select_iG39m7": {
           "type": "select",
           "settings": {
-            "title": "title",
-            "bean-bag": "",
-            "water_bottle": ""
+            "title": "title"
+          }
+        },
+        "select_LgETzB": {
+          "type": "select",
+          "settings": {
+            "title": ""
           }
         }
       },
       "block_order": [
-        "select_iG39m7"
+        "select_iG39m7",
+        "select_LgETzB"
       ],
       "settings": {
       }
