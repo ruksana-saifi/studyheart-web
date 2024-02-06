@@ -9,7 +9,12 @@
           <li>
             <a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a>
              {%- for grandchildlink in childlink.links -%}
-                <li><a href="{{ grandchildlink.url }}"> {{ grandchildlink.title | escape }}</a></li>
+                <li>
+                   <a href="{{ grandchildlink.url }}"> {{ grandchildlink.title | escape }}</a>
+                   {%- for greatgrandchildlink in grandchildlink.links -%}
+                      <li><a href="{{ greatgrandchildlink.url }}"> {{ greatgrandchildlink.title | escape }}</a></li>
+                   {% endfor %}
+                </li>
              {% endfor %}
           </li>
           {% endfor %}
