@@ -21,5 +21,8 @@
         </ul>
       </li>
     {% endfor %}
+    {% if collection %}
+      <li>{{ collection.title }}</li>
+    {% endif %}
   </ul>
 </nav>
