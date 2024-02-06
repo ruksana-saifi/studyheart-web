@@ -22,8 +22,8 @@
   <div class="collection-area">
           <div class="coll-items">
             <div class="collection-category_sec">
-             <a href="{{ block.settings.url }}">
-                <img src="{{ block.settings.all_collection | image_url}}" alt="{{ page.title }}" width="" height="">
+             <a href="{{ section.settings.url }}">
+                <img src="{{ section.settings.all_collection | image_url}}" alt="{{ page.title }}" width="" height="">
              </a>
             </div>
           </div>
@@ -44,17 +44,18 @@
 {% schema %}
 {
   "name": "Top Category",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "all_collection",
+      "label": "All Collection Image"
+    }
+  ],
   "blocks": [
     {
       "name": "Collection Categories",
       "type": "select",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "all_collection",
-          "label": "All Collection Image"
-        },
         {
           "type": "image_picker",
           "id": "img",
