@@ -24,15 +24,18 @@
     <div class="collection-hero__text-wrapper">
       <h1 class="collection-hero__title">
         {{ collection.metafields.custom.parent_collection_name | append: ' ›' }}
-<br>
-        {% if collection.metafields.custom.parent_collection_name %}
-  {{ collection.metafields.custom.parent_collection_name | append: ' ›' }}
-{% endif %}
-
-{% if collection.metafields.custom.parent_collection_name %}
-  {% assign fieldName = 'Parent Collection Name' %}
-  {{ fieldName | append: ' ›' }}
-{% endif %}
+<div class="breadcrumbs">
+  <a href="/">Home</a>
+  {% for collection in collection.all_products_collections %}
+    {% if collection.title != current_collection.title %}
+      <span class="separator">›</span>
+      <a href="{{ collection.url }}">{{ collection.title }}</a>
+    {% else %}
+      <span class="separator">›</span>
+      <span>{{ collection.title }}</span>
+    {% endif %}
+  {% endfor %}
+</div>
 
        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
         {{- collection.title | escape -}}
