@@ -4,14 +4,11 @@
     {% for link in main_menu %}
       <li>
         <a href="{{ link.url }}">{{ link.title }}</a>
-      {% if link.links != Blank %}
         <ul> 
           {%- for childlink in link.links -%}
           <li><a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a></li>
           {% endfor %}
         </ul>
-        {% else %}
-        {% endif %}
       </li>
     {% endfor %}
   </ul>
