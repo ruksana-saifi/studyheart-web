@@ -10,6 +10,7 @@
           <li><a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a></li>
           {% endfor %}
         </ul>
+        {% else %}
         {% endif %}
       </li>
     {% endfor %}
