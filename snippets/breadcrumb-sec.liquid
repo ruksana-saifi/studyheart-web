@@ -1,6 +1,6 @@
 <nav class="header-nav">
   <ul>
-    {% assign main_menu = linklists.main-menu.links %}
+    {% assign main_menu = linklists.breadcrumb.links %}
     {% for link in main_menu %}
       <li><a href="{{ link.url }}">{{ link.title }}</a></li>
     {% endfor %}
