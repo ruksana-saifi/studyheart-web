@@ -8,8 +8,8 @@
           {%- for childlink in link.links -%}
           <li>
             <a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a>
-             {%- for childlink in link.links -%}
-                <li><a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a></li>
+             {%- for grandchildlink in link.links -%}
+                <li><a href="{{ grandchildlink.url }}"> {{ grandchildlink.title | escape }}</a></li>
              {% endfor %}
           </li>
           {% endfor %}
