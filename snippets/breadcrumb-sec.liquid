@@ -6,7 +6,12 @@
         <a href="{{ link.url }}">{{ link.title }}</a>
         <ul> 
           {%- for childlink in link.links -%}
-          <li><a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a></li>
+          <li>
+            <a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a>
+             {%- for childlink in link.links -%}
+                <li><a href="{{ childlink.url }}"> {{ childlink.title | escape }}</a></li>
+             {% endfor %}
+          </li>
           {% endfor %}
         </ul>
       </li>
