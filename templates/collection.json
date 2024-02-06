@@ -7,6 +7,7 @@
           "type": "select",
           "repeater": "{{ collection.metafields.custom.collection_sub_category.value }}",
           "settings": {
+            "all_collection": "shopify:\/\/shop_images\/all-categories-icon.png",
             "img": "{{ block.repeater.image.value }}",
             "title": "{{ block.repeater.title.value }}",
             "url": "{{ block.repeater.url.value }}"
