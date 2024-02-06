@@ -20,7 +20,13 @@
 <div class="page-width">
   <h1>{{ section.settings.maintitle }}</h1>
   <div class="collection-area">
-      
+          <div class="coll-items">
+            <div class="collection-category_sec">
+             <a href="{{ block.settings.url }}">
+                <img src="{{ block.settings.all_collection | image_url}}" alt="{{ page.title }}" width="" height="">
+             </a>
+            </div>
+          </div>
         {% for block in section.blocks %}
           <div class="coll-items">
             <div class="collection-category_sec">
