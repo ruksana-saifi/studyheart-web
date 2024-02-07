@@ -1,3 +1,7 @@
 .header .link{
     font-size: 20px !important;
 }
+.header__active-menu-item {
+    color: #02b9ff;
+    text-decoration: none;
+}
