@@ -1,3 +1,9 @@
 .header .link{
     font-size: 20px !important;
 }
+.utility-bar.utility-bar--bottom-border {
+    background: #293953;
+}
+p.announcement-bar__message.h5 {
+    color: #fff;
+}
