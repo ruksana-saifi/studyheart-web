@@ -7,3 +7,8 @@
 p.announcement-bar__message.h5 {
     color: #fff;
 }
+h2.title {
+    font-size: 42px;
+    color: #05386b;
+    font-weight: bold;
+}
