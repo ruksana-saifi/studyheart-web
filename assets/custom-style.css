@@ -37,11 +37,13 @@ p.announcement-bar__message.h5 {
 }
 .form-control {
     height: 53px;
-    font-size: 19px;
+    font-size: 19px  !important;
     padding: 0 20px;
 }
 .form-control:placeholder {
     color: #959595;
+    font-size: 19px;
+  
 }
 button {
     background: #51ade0 !important;
