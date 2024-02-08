@@ -46,27 +46,37 @@
           <input type="submit" class="btn" value="Submit" />
         </div>
       {% endform %}
+      <div id="success-message" style="display: none; color: green;">
+  <p>Form submitted successfully! Thank you for contacting us.</p>
+</div>
    </div>
  </div>
 </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          var form = document.querySelector('form');
-          var successMessage = document.getElementById('success-message');
+  <!-- ... (your form code) ... -->
 
-          form.addEventListener('submit', function(event) {
-            // Prevent the default form submission
-            event.preventDefault();
 
-            // Simulate form submission success (replace this with your actual form submission logic)
-            // For demonstration purposes, we show the success message after a brief delay
-            setTimeout(function() {
-              form.reset(); // Reset the form
-              successMessage.style.display = 'block'; // Display the success message
-            }, 1000); // Adjust the delay as needed
-          });
-        });
-      </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.querySelector('form');
+    var successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', function(event) {
+      // Prevent the default form submission
+      event.preventDefault();
+
+      // Simulate form submission success (replace this with your actual form submission logic)
+      // For demonstration purposes, we show the success message after a brief delay
+      setTimeout(function() {
+        form.reset(); // Reset the form
+        successMessage.style.display = 'block'; // Display the success message
+      }, 1000); // Adjust the delay as needed
+    });
+  });
+</script>
+
+<!-- ... (rest of your schema code) ... -->
+
 {% schema %}
   {
     "name": "B2B Form",
