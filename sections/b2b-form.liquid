@@ -49,7 +49,24 @@
    </div>
  </div>
 </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var form = document.querySelector('form');
+          var successMessage = document.getElementById('success-message');
 
+          form.addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Simulate form submission success (replace this with your actual form submission logic)
+            // For demonstration purposes, we show the success message after a brief delay
+            setTimeout(function() {
+              form.reset(); // Reset the form
+              successMessage.style.display = 'block'; // Display the success message
+            }, 1000); // Adjust the delay as needed
+          });
+        });
+      </script>
 {% schema %}
   {
     "name": "B2B Form",
