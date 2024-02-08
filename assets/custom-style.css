@@ -9,11 +9,12 @@ p.announcement-bar__message.h5 {
 }
 h2.title {
     font-size: 42px;
-    color: #05386b;
+    color: #51ade0;
     font-weight: bold;
 }
 .card__heading a {
     font-size: 20px;
+  color: #05386b;
 }
 .card__information {
     padding: 20px !important;
