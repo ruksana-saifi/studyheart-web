@@ -43,3 +43,10 @@ p.announcement-bar__message.h5 {
 .form-control:placeholder {
     color: #959595;
 }
+button {
+    background: #51ade0 !important;
+    font-size: 20px !important;
+    padding: 10px 35px !important;
+    margin: 20px 0;
+    border: 1px solid #51ade0 !important;
+}
