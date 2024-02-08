@@ -4,6 +4,10 @@ body{
 .header .link{
     font-size: 20px !important;
 }
+.errors {
+    font-size: 20px;
+    color: red;
+}
 .utility-bar.utility-bar--bottom-border {
     background: #293953;
 }
