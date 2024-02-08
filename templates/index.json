@@ -106,11 +106,13 @@
         "select_jmYEMi",
         "select_qaAjDR"
       ],
+      "disabled": true,
       "settings": {
       }
     },
     "featured_product2_eirJhY": {
       "type": "featured-product2",
+      "disabled": true,
       "settings": {
         "product": "demo",
         "title": "",
@@ -120,6 +122,7 @@
     },
     "b2b_form_cFYi9t": {
       "type": "b2b-form",
+      "disabled": true,
       "settings": {
       }
     },
@@ -150,6 +153,7 @@
         "select_QbqT3Y",
         "select_mWbKUe"
       ],
+      "disabled": true,
       "settings": {
         "bg-color": "#00c6ff",
         "margin": "",
