@@ -31,3 +31,15 @@ p.announcement-bar__message.h5 {
 .forms h2 {
     font-size: 41px;
 }
+.forms label {
+    font-size: 21px;
+    color: #293953;
+}
+.form-control {
+    height: 53px;
+    font-size: 19px;
+    padding: 0 20px;
+}
+.form-control:placeholder {
+    color: #959595;
+}
