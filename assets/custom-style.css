@@ -52,7 +52,7 @@ p.announcement-bar__message.h5 {
     font-size: 19px;
   
 }
-button {
+button, .btn {
     background: #51ade0 !important;
     font-size: 20px !important;
     padding: 10px 35px !important;
