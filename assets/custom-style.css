@@ -12,3 +12,9 @@ h2.title {
     color: #05386b;
     font-weight: bold;
 }
+.card__heading a {
+    font-size: 20px;
+}
+.card__information {
+    padding: 20px !important;
+}
